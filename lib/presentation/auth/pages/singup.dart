@@ -3,9 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify/common/widgets/appbar/app_bar.dart';
 import 'package:spotify/common/widgets/button/basic_app_button.dart';
 import 'package:spotify/core/configs/assets/app_vector.dart';
-import 'package:spotify/data/models/auth/create_user_req.dart';
-import 'package:spotify/domain/usecases/auth/signup.dart';
-import 'package:spotify/presentation/auth/pages/signin.dart';
+import 'package:spotify/data/moldes/auth/create_user_req.dart';
+import 'package:spotify/domain/usecases/auth/singup.dart';
+import 'package:spotify/presentation/auth/pages/singin.dart';
 import 'package:spotify/presentation/home/pages/home.dart';
 import 'package:spotify/service_locator.dart';
 
