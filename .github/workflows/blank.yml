@@ -1,0 +1,47 @@
+name: Flutter CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Configurar Flutter en el runner
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: 'stable'
+
+    # Analizar el código
+    - name: Analyze Code
+      run: flutter analyze
+
+    # Ejecutar pruebas
+    - name: Run Tests
+      run: flutter test
+
+    # Construcción de la aplicación para Android
+    - name: Build APK (Android)
+      run: flutter build apk --release
+      env:
+        JAVA_HOME: /usr/lib/jvm/java-11-openjdk-amd64
+
+    # Construcción de la aplicación para iOS (solo en macOS)
+    # Este paso está comentado por defecto porque necesita macOS
+    # - name: Build IPA (iOS)
+    #   runs-on: macos-latest
+    #   run: flutter build ios --release --no-codesign
+
+    # Generación de build para web (si es necesario)
+    - name: Build Web
+      run: flutter build web
